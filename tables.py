@@ -45,3 +45,14 @@ def createBusinessTable():
         hours varchar(200),\
         PRIMARY KEY (business_id))")
     print("Business Table created")
+
+def cleanUp():
+    cursor.execute("DROP TABLE if exists review")
+    cursor.execute("DROP table if exists user")
+    cursor.execute("DROP TABLE if exists business")
+
+def insertData():
+    # function to insert after the initial insert manually by using the application
+
+def import_csv():
+    # function to import all data given by csv files
