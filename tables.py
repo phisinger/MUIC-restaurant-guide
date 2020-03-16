@@ -1,4 +1,7 @@
 import mysql.connector as mariadb
+import csv
+import os
+from datetime import datetime
 
 
 mariadb_connection = mariadb.connect(user='root', password='1234', database='yelp_academic')
@@ -51,8 +54,35 @@ def cleanUp():
     cursor.execute("DROP table if exists user")
     cursor.execute("DROP TABLE if exists business")
 
+# Maybe we need a table "menu" ?
+
 def insertData():
     # function to insert after the initial insert manually by using the application
+    pass
 
-def import_csv():
+def import_csv(tableName):
     # function to import all data given by csv files
+    cur_path = os.path.dirname("tables.py")
+    with open(os.path.join(cur_path, "csv", tableName+".csv"), mode='r') as csv_file:
+        csv_reader = csv.DictReader(csv_file, delimiter=";")
+        column = 1
+        for row in csv_reader:
+            if column:
+                column = 0
+            else:
+                # build the insert command
+                #count+=1
+                sql = "INSERT INTO "+ tableName + " VALUES ("
+                for key in row:
+                    if (row[key]==None):
+                        string="null,"
+                    else:
+                        # data processing to clean the data
+                        string="'"+(str(row[key]))+ "'," #.replace("'","")).replace("\\","\\\\")+"',"
+                    sql+=string
+                sql=sql[:-1]+");\n"
+                #print(sql)
+                cursor.execute(sql)
+        mariadb_connection.commit()
+
+# import_csv("business")
