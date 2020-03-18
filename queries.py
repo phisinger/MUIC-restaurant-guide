@@ -16,6 +16,24 @@ def topBusinesses(city, number):
             print("_________________________________________")
             i += 1
 
+# Show all reviews of a business
+def allReviews(business_id):
+   sql = "SELECT r.user_id, u.name, r.date, r.stars, r.text\
+            FROM user u, review r\
+            AND u.user_id = r.user_id\
+            WHERE r.business_id=" + business_id
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    i = 1
+    for r in results:
+        print(i, ")")
+        print(i, "userID:", r[0], "| username: ",
+        r[1], "| date:", r[2],"rating:", r[3] "/5 |")
+        print("Comment:", r[4])
+        print("_________________________________________")
+        i += 1
+         
+#returns all businesses with a certain category
 def businessByCat(category):
     sql = "SELECT name, city, stars, description FROM\
             business b, categories c\
@@ -30,3 +48,11 @@ def businessByCat(category):
             print("Description:", r[3])
             print("_________________________________________")
             i += 1
+
+       
+
+def allFriends(user_id):
+    sql = "SELECT u.user_id, u.name, \
+        FROM user u, friends f\
+        WHERE
+            

@@ -16,7 +16,13 @@ def createUserTable():
                     member_since DATETIME(),\
                     average_stars FLOAT(4),\
                     Primary Key (user_id))")
-    print("User Table created") 
+    print("User Table created")
+
+def createFriendTable():
+    cursor.execute("CREATE TABLE friends(user_id INT,\
+                    friend INT,\
+                    FOREIGN KEY(user_id) REFERENCES user(user_id))")
+    print("User Table created")     
 
 #Create review table
 def createReviewTable():
