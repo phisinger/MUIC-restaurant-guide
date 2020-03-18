@@ -9,14 +9,20 @@ cursor = mariadb_connection.cursor()
 
 #Create user table
 def createUserTable():
-    cursor.execute("CREATE TABLE user(user_id CHAR(22),\
+    cursor.execute("CREATE TABLE user(user_id INT,\
                     name VARCHAR(50),\
                     review_count INT,\
                     member_since date,\
                     friends MEDIUMTEXT,\
                     average_stars FLOAT(4),\
                     Primary Key (user_id))")
-    print("User Table created") 
+    print("User Table created")
+
+def createFriendTable():
+    cursor.execute("CREATE TABLE friends(user_id INT,\
+                    friend INT,\
+                    FOREIGN KEY(user_id) REFERENCES user(user_id))")
+    print("User Table created")     
 
 #Create review table
 def createReviewTable():
