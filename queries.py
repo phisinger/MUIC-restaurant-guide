@@ -14,6 +14,7 @@ def allReviews(business_id):
         i += 1
 
 def allFriends(user_id):
-    sql = "SELECT u.user_id, u.name\
+    sql = "SELECT u.user_id, u.name, \
         FROM user u, friends f\
+        WHERE
             

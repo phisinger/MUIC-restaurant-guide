@@ -6,4 +6,4 @@ You can change your password in the mariaDB prompt with the following command:
 
 mysqladmin --user=root --password=oldpassword password "newpassword"
 
-Please create a database with the name "MUIC-restaurant-guide". These agreements should make our life easier. :-)
+Please create a database with the name "MUIC_restaurant_guide". These agreements should make our life easier. :-)
