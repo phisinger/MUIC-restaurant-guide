@@ -68,8 +68,11 @@ def createfriendsTable():
 
 def cleanUp():
     cursor.execute("DROP TABLE if exists review")
+    cursor.execute("DROP TABLE if exists friends")
+    cursor.execute("DROP TABLE if exists categories")
     cursor.execute("DROP table if exists user")
     cursor.execute("DROP TABLE if exists business")
+    
 
 
 def insertData():
@@ -94,7 +97,7 @@ def import_csv(tableName):
                         string="null,"
                     else:
                         # data processing to clean the data
-                        string="'"+(str(row[key]))+ "'," #.replace("'","")).replace("\\","\\\\")+"',"
+                        string="'"+(str(row[key]).replace(",",".")) + "'," #.replace("\\","\\\\")+"',"
                     sql+=string
                 sql=sql[:-1]+");\n"
                 #print(sql)
@@ -102,3 +105,46 @@ def import_csv(tableName):
         mariadb_connection.commit()
 
 # import_csv("business")
+
+def main():
+    #User interface in console
+    print("Welcome to the MUIC restaurant guide:")
+    print("You have two choices: Import the data (IMPORT) or request query search (QUERY)")
+    user_input = input("What do you want to do? ")
+    if user_input.upper() == "IMPORT":
+        cleanUp()
+        createBusinessTable()
+        createUserTable()
+        createfriendsTable()
+        createcategoriesTable()
+        createReviewTable()
+        print("Current Time =", datetime.now().strftime("%H:%M:%S"))
+        tables = ["business", "user", "review", "categories", "friends"]
+        for table_name in tables:
+            insertIntoTable(table_name)
+            print("finished filling table",table_name)
+            print("Current Time =", datetime.now().strftime("%H:%M:%S"))
+    # User interface to run queries        
+    elif user_input.upper() == "QUERY":
+        print("You can choose between stillThere (1), topReviews (2), averageRating (3), eliteCount (4)")
+        user_input = input("Which querry do you want to send? ")
+        if user_input == "1":
+            postal_code = input("Please enter the postal code: ")
+            stillThere(postal_code)
+        elif user_input == "2":
+            business_id = input("Please enter the business ID: ")
+            topReviews(business_id)
+        elif user_input == "3":
+            user_id = input("Please enter the user ID: ")
+            averageRating(user_id)
+        elif user_input == "4":
+            values = input("Please enter city, user threashold and amount of tuples seperated by commata: ")
+            city, eliteCount, topCount = values.split(',')
+            print("Current Time =", datetime.now().strftime("%H:%M:%S"))
+            topBusinessInCity(city, eliteCount, topCount)
+            print("Current Time =", datetime.now().strftime("%H:%M:%S"))
+        else:
+            print("Invalid enter, Please try again")
+            
+    else:
+        print("Invalid enter, Please try again")
