@@ -1,22 +1,22 @@
 ﻿business_id;name;address;city;state;postal_code;stars;review_count;is_open;description;hours
-0;shake lady;60 Sai 4;Nakhon Pathom;Phutthamonthon;73170;1,62;6;1;fresh fruitshakes and fruits;08:00-19:00
-1;Mr Burger;Sai 4 70/6 ;Nakhon Pathom;Phutthamonthon;73170;2,40;18;1;lovely burger;11:00-15:00
-2;Wrap Lady;Sai 4 70/6 ;Nakhon Pathom;Phutthamonthon;73170;3,53;13;1;amazing burger and wraps;11:00-15:00
-3;Capri Cove;Sai 4 70/6 ;Nakhon Pathom;Phutthamonthon;73170;3,52;16;1;Everything you want;08:00-19:00
-4;Midnight Gaiang;Unnamed Road, Salaya;Nakhon Pathom;Phutthamonthon;73170;2,59;8;1;such a experience;11:00-15:00
-5;Beanbac cafe;Salaya;Nakhon Pathom;Phutthamonthon;73170;1,47;9;1;Perfect for your everyday curry supply;10:00-18:00
-6;Sanookpak Juice bar;25/5 Salaya;Nakhon Pathom;Phutthamonthon;73170;3,67;4;1;fresh fruit shakes;22:00-03:00
-7;September Salaya;4006  59 Moo 4 Salaya;Nakhon Pathom;Phutthamonthon;73170;4,71;19;1;relaxed restaurant;08:00-19:00
-8;anya's Place;152 Moo 5 Thanon Thawi Watthana, Salaya;Nakhon Pathom;Phutthamonthon;73170;4,77;19;1;for a special evening!;10:00-18:00
-9;Rustico;871, Sala Thammasop, Thawi Watthana;Nakhon Pathom;Phutthamonthon;10170;3,16;6;1;best italien restaurant in salaya;11:00-15:00
-10;PhoFactory;73/80 Moo 5 ;Nakhon Pathom;Phutthamonthon;73170;3,52;7;1;fresh fruitshakes and fruits;08:00-19:00
+0;shake lady;60 Sai 4;Stratford;Phutthamonthon;73170;1,62;6;1;fresh fruitshakes and fruits;08:00-19:00
+1;Mr Burger;Sai 4 70/6 ;Washington;Phutthamonthon;73170;2,4;18;1;lovely burger;11:00-15:00
+2;Wrap Lady;Sai 4 70/6 ;Gongju;Phutthamonthon;73170;3,53;13;1;amazing burger and wraps;11:00-15:00
+3;Capri Cove;Sai 4 70/6 ;Santa Caterina Villarmosa;Phutthamonthon;73170;3,52;16;1;Everything you want;08:00-19:00
+4;Midnight Gaiang;Unnamed Road, Salaya;Meix-le-Tige;Phutthamonthon;73170;2,59;8;1;such a experience;11:00-15:00
+5;Beanbac cafe;Salaya;Stratford;Phutthamonthon;73170;1,47;9;1;Perfect for your everyday curry supply;10:00-18:00
+6;Sanookpak Juice bar;25/5 Salaya;Bad Nauheim;Phutthamonthon;73170;3,67;4;1;fresh fruit shakes;22:00-03:00
+7;September Salaya;4006  59 Moo 4 Salaya;Hexham;Phutthamonthon;73170;4,71;19;1;relaxed restaurant;08:00-19:00
+8;anya's Place;152 Moo 5 Thanon Thawi Watthana, Salaya;Saalfelden am Steinernen Meer;Phutthamonthon;73170;4,77;19;1;for a special evening!;10:00-18:00
+9;Rustico;871, Sala Thammasop, Thawi Watthana;Castor;Phutthamonthon;10170;3,16;6;1;best italien restaurant in salaya;11:00-15:00
+10;PhoFactory;73/80 Moo 5 ;Stratford;Phutthamonthon;73170;3,52;7;1;fresh fruitshakes and fruits;08:00-19:00
 11;Awesome Chicken Food Court;Phutthamonthon Sai 4 Rd, Salaya;Nakhon Pathom;Phutthamonthon;73170;3,29;14;1;lovely burger;10:00-18:00
-12;Kasoku Sushi;70 Sai 4;Nakhon Pathom;Phutthamonthon;73170;3,64;5;1;amazing burger and wraps;11:00-15:00
+12;Kasoku Sushi;70 Sai 4;Castor;Phutthamonthon;73170;3,64;5;1;amazing burger and wraps;11:00-15:00
 13;Yoi Tenki Shabu;Salaya;Nakhon Pathom;Phutthamonthon;73170;3,69;15;1;Everything you want;08:00-19:00
-14;Pete's birthday Place;135/113-5 Phutthamonthon Sai 4 Rd, Salaya;Nakhon Pathom;Phutthamonthon;73170;3,87;14;1;such a experience;10:00-18:00
+14;Pete's birthday Place;135/113-5 Phutthamonthon Sai 4 Rd, Salaya;Castor;Phutthamonthon;73170;3,87;14;1;such a experience;10:00-18:00
 15;Roti kart;81-83 Moo 4;Nakhon Pathom;Phutthamonthon;73170;1,67;13;1;Perfect for your everyday curry supply;08:00-19:00
-16;Groove market;Sai 4 70/6 ;Nakhon Pathom;Phutthamonthon;73170;2,30;8;1;fresh fruit shakes;10:00-18:00
+16;Groove market;Sai 4 70/6 ;Nakhon Pathom;Phutthamonthon;73170;2,3;8;1;fresh fruit shakes;10:00-18:00
 17;Crepe Lady;71 Sai 4;Nakhon Pathom;Phutthamonthon;73170;2,07;17;0;relaxed restaurant;22:00-03:00
-18;PadThai Place;25/5 Salaya;Nakhon Pathom;Phutthamonthon;73170;1,56;14;1;for a special evening!;08:00-19:00
-19;Ama Restaurant;10-11 5, Soi Mu Ban Sala Ya Village, Salaya;Nakhon Pathom;Phutthamonthon;73170;2,40;10;1;best italien restaurant in salaya;22:00-03:00
+18;PadThai Place;25/5 Salaya;Gongju;Phutthamonthon;73170;1,56;14;1;for a special evening!;08:00-19:00
+19;Ama Restaurant;10-11 5, Soi Mu Ban Sala Ya Village, Salaya;Gongju;Phutthamonthon;73170;2,4;10;1;best italien restaurant in salaya;22:00-03:00
 20;One night Crepe;Sai 4 70/6 ;Nakhon Pathom;Phutthamonthon;73170;1,47;11;1;sweet and hot;11:00-15:00

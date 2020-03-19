@@ -1,3 +1,9 @@
+import mysql.connector as mariadb
+
+
+mariadb_connection = mariadb.connect(user='root', password='1234', database='muic_restaurant_guide')
+cursor = mariadb_connection.cursor()
+
 # Select top [number] businesses in a city based on their rating
 def topBusinesses(city, number):
     sql = "SELECT name, city, stars, description FROM\

@@ -2,6 +2,7 @@ import mysql.connector as mariadb
 import csv
 import os
 from datetime import datetime
+from queries import *
 
 
 mariadb_connection = mariadb.connect(user='root', password='1234', database='muic_restaurant_guide')
@@ -132,23 +133,24 @@ def main():
             print("Current Time =", datetime.now().strftime("%H:%M:%S"))
     # User interface to run queries        
     elif user_input.upper() == "QUERY":
-        print("You can choose between stillThere (1), topReviews (2), averageRating (3), eliteCount (4)")
+        print("You can choose between topbusinesses (1), allReviews (2), allFriends (3), businessByCategory (4) CHANGE (5)")
         user_input = input("Which querry do you want to send? ")
         if user_input == "1":
-            postal_code = input("Please enter the postal code: ")
-            stillThere(postal_code)
+            values = input("Please enter the city and the number of results seperated by comma: ")
+            city, number = values.split(',')
+            topBusinesses(city, number)
         elif user_input == "2":
             business_id = input("Please enter the business ID: ")
-            topReviews(business_id)
+            allReviews(business_id)
         elif user_input == "3":
             user_id = input("Please enter the user ID: ")
-            averageRating(user_id)
+            allFriends(user_id)
         elif user_input == "4":
-            values = input("Please enter city, user threashold and amount of tuples seperated by commata: ")
-            city, eliteCount, topCount = values.split(',')
-            print("Current Time =", datetime.now().strftime("%H:%M:%S"))
-            topBusinessInCity(city, eliteCount, topCount)
-            print("Current Time =", datetime.now().strftime("%H:%M:%S"))
+            cat = input("Please enter one category: ")
+            businessByCat(cat)
+        elif user_input == "5":
+            # just for the next query
+            pass
         else:
             print("Invalid enter, Please try again")
             
