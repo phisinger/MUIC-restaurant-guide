@@ -11,8 +11,7 @@ def topBusinesses(city, number):
             WHERE city='" + city + "'" + "\
             ORDER BY stars DESC\
             LIMIT " + number
-    print(number)
-    print(sql)
+  
     cursor.execute(sql)
     results = cursor.fetchall()
     i = 1
