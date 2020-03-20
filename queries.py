@@ -8,10 +8,11 @@ cursor = mariadb_connection.cursor()
 def topBusinesses(city, number):
     sql = "SELECT name, city, stars, description FROM\
             business\
-            WHERE city=" + city + "\
+            WHERE city='" + city + "'" + "\
             ORDER BY stars DESC\
             LIMIT " + number
-
+    print(number)
+    print(sql)
     cursor.execute(sql)
     results = cursor.fetchall()
     i = 1
