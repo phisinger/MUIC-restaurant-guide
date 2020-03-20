@@ -34,7 +34,7 @@ def allReviews(business_id):
     for r in results:
         print(i, ")")
         print(i, "userID:", r[0], "| username: ",
-        r[1], "| date:", r[2],"rating:", r[3] "/5 |")
+        r[1], "| date:", r[2],"rating:", r[3], "/5 |")
         print("Comment:", r[4])
         print("_________________________________________")
         i += 1

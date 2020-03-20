@@ -1,7 +1,4 @@
-﻿business_ID;category
-0;fruit
-0;cheap
-0;shake
+﻿business_id;category
 1;bruger
 1;international
 2;wrap 
@@ -79,3 +76,6 @@
 20;expensive
 20;spaghetti
 20;international
+21;fruit
+21;cheap
+21;shake
