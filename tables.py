@@ -14,16 +14,12 @@ def createUserTable():
                     user_id INT,\
                     name VARCHAR(50),\
                     review_count INT,\
-                    member_since DATETIME(),\
+                    member_since DATE,\
                     average_stars FLOAT(4),\
-                    Primary Key (user_id))")
+                    Primary Key (user_id));")
     print("User Table created")
 
-def createFriendTable():
-    cursor.execute("CREATE TABLE friends(user_id INT,\
-                    friend INT,\
-                    FOREIGN KEY(user_id) REFERENCES user(user_id))")
-    print("User Table created")     
+   
 
 #Create review table
 def createReviewTable():
@@ -32,11 +28,11 @@ def createReviewTable():
                     user_id INT,\
                     business_id INT,\
                     stars INT, \
-                    date DATETIME(),\
+                    date DATE,\
                     text VARCHAR(4000),\
-                    PRIMARY KEY(review_id),\
-                    FOREIGN KEY(user_id) REFERENCES user(user_id),\
-                    FOREIGN KEY(business_id) REFERENCES business(business_id))")
+                    PRIMARY KEY (review_id),\
+                    FOREIGN KEY (user_id) REFERENCES user(user_id),\
+                    FOREIGN KEY (business_id) REFERENCES business(business_id))")
     print("Review Table created")
 
 #Create business table
@@ -46,14 +42,14 @@ def createBusinessTable():
         name varchar(100),\
         address varchar(255),\
         city varchar(100),\
-        state varchar(4),\
+        state varchar(400),\
         postal_code INT,\
         stars float(23),\
         review_count INT,\
         is_open bool,\
-        description varchar(2000)\
+        description varchar(2000),\
         hours varchar(200),\
-        PRIMARY KEY (business_id))")
+        PRIMARY KEY (business_id));")
     print("Business Table created")
 
 #Create categories table
@@ -61,16 +57,16 @@ def createcategoriesTable():
     cursor.execute("CREATE TABLE categories (\
         business_id INT,\
         category varchar(500),\
-        FOREIGN KEY(business_id) REFERENCES business(business_id))")
+        FOREIGN KEY (business_id) REFERENCES business(business_id));")
     print("Categories Table created")
 
 #Create friends table
-def createfriendsTable():    
+def createFriendsTable():    
     cursor.execute("CREATE TABLE friends (\
         user_id INT,\
         friend INT,\
         FOREIGN KEY(user_id) REFERENCES user(user_id),\
-        FOREIGN KEY(friend) REFERENCES user(user_id)")
+        FOREIGN KEY(friend) REFERENCES user(user_id));")
     print("Friends Table created")
 
 def cleanUp():
@@ -91,24 +87,24 @@ def import_csv(tableName):
     cur_path = os.path.dirname("tables.py")
     with open(os.path.join(cur_path, "csv", tableName+".csv"), mode='r') as csv_file:
         csv_reader = csv.DictReader(csv_file, delimiter=";")
-        column = 1
+        column = 0
         for row in csv_reader:
-            if column:
-                column = 0
-            else:
-                # build the insert command
-                #count+=1
-                sql = "INSERT INTO "+ tableName + " VALUES ("
-                for key in row:
-                    if (row[key]==None):
-                        string="null,"
-                    else:
-                        # data processing to clean the data
-                        string="'"+(str(row[key]).replace(",",".")) + "'," #.replace("\\","\\\\")+"',"
-                    sql+=string
-                sql=sql[:-1]+");\n"
-                #print(sql)
-                cursor.execute(sql)
+            # if column:
+            #     column = 0
+            # else:
+            #     # build the insert command
+            #     #count+=1
+            sql = "INSERT INTO "+ tableName + " VALUES ("
+            for key in row:
+                if (row[key]==None):
+                    string="null,"
+                else:
+                    # data processing to clean the data
+                    string="'"+(str(row[key]).replace(",",".")).replace("\'","\\\'")+"',"
+                sql+=string
+            sql=sql[:-1]+");\n"
+            print(sql)
+            cursor.execute(sql)
         mariadb_connection.commit()
 
 # import_csv("business")
@@ -122,13 +118,13 @@ def main():
         cleanUp()
         createBusinessTable()
         createUserTable()
-        createfriendsTable()
+        createFriendsTable()
         createcategoriesTable()
         createReviewTable()
         print("Current Time =", datetime.now().strftime("%H:%M:%S"))
         tables = ["business", "user", "review", "categories", "friends"]
         for table_name in tables:
-            insertIntoTable(table_name)
+            import_csv(table_name)
             print("finished filling table",table_name)
             print("Current Time =", datetime.now().strftime("%H:%M:%S"))
     # User interface to run queries        
@@ -156,3 +152,7 @@ def main():
             
     else:
         print("Invalid enter, Please try again")
+
+
+if __name__ == "__main__":
+    main()
