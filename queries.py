@@ -70,14 +70,14 @@ def allFriends(user_id):
 
 # returns the users favourite categories (since no login available, user_id entered manually for now)        
 def favouriteCategories(user_id):
-    sql = "SELECT DISTINCT c.category\
+    sql = "SELECT c.category\
            FROM categories c, review r\
-           WHERE r.business_id IN (\
-                   SELECT r.business_id \
-                   FROM user u, review r\
-                   WHERE u.user_id = r.user_id\
-                   ORDER BY r.stars DESC\
-                   LIMIT 3)"
+           WHERE  r.user_id = " + user_id + "\
+           AND c.business_id = r.business_id\
+           AND r.stars > 3\
+           GROUP BY c.category\
+           ORDER BY COUNT(r.review_id) DESC\
+           LIMIT 4"
     cursor.execute(sql)
     results = cursor.fetchall()
     for r in results:
