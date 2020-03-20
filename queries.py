@@ -42,10 +42,10 @@ def allReviews(business_id):
          
 #returns all businesses with a certain category
 def businessByCat(category):
-    sql = "SELECT name, city, stars, description FROM\
-            business b, categories c\
+    sql = "SELECT name, city, stars, description \
+            FROM business, categories\
             WHERE business.business_id = categories.business_id\
-            AND category.category=" + category
+            AND categories.category='" + category + "'"
     cursor.execute(sql)
     results = cursor.fetchall()
     i = 1
