@@ -8,10 +8,11 @@ cursor = mariadb_connection.cursor()
 def topBusinesses(city, number):
     sql = "SELECT name, city, stars, description FROM\
             business\
-            WHERE city=" + city + "\
+            WHERE city='" + city + "'" + "\
             ORDER BY stars DESC\
             LIMIT " + number
-
+    print(number)
+    print(sql)
     cursor.execute(sql)
     results = cursor.fetchall()
     i = 1
@@ -25,8 +26,7 @@ def topBusinesses(city, number):
 # Show all reviews of a business
 def allReviews(business_id):
         sql = "SELECT r.user_id, u.name, r.date, r.stars, r.text\
-        FROM user u, review r\
-        AND u.user_id = r.user_id\
+        FROM user u JOIN review r ON u.user_id=r.user_id\
         WHERE r.business_id=" + business_id
 
 
