@@ -42,7 +42,7 @@ def allReviews(business_id):
          
 #returns all businesses with a certain category
 def businessByCat(category):
-    sql = "SELECT name, city, stars, description \
+    sql = "SELECT DISTINCT name, city, stars, description \
             FROM business, categories\
             WHERE business.business_id = categories.business_id\
             AND categories.category='" + category + "'"
@@ -58,10 +58,10 @@ def businessByCat(category):
 
 #returns all friends (id and name) of the entered user
 def allFriends(user_id):
-    sql = "SELECT u2.user_id, u2.name, \
+    sql = "SELECT u2.user_id, u2.name \
         FROM user u1, user u2, friends f\
         WHERE u1.user_id = f.user_id\
-        AND u1.user_id = " + user_id + "\
+        AND u1.user_id = '" + user_id + "'\
         AND u2.user_id = f.friend"
     cursor.execute(sql)
     results = cursor.fetchall()
@@ -75,7 +75,7 @@ def favouriteCategories(user_id):
            WHERE r.business_id IN (\
                    SELECT r.business_id \
                    FROM user u, review r\
-                   WHERE u.user_id = r.user_id\
+                   WHERE u.user_id = '" + user_id+ "'\
                    ORDER BY r.stars DESC\
                    LIMIT 3)"
     cursor.execute(sql)
