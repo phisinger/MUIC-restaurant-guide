@@ -57,11 +57,12 @@ def businessByCat(category):
 
 #returns all friends (id and name) of the entered user
 def allFriends(user_id):
-    sql = "SELECT u2.user_id, u2.name, \
+    sql = "SELECT u2.user_id, u2.name \
         FROM user u1, user u2, friends f\
         WHERE u1.user_id = f.user_id\
         AND u1.user_id = " + user_id + "\
         AND u2.user_id = f.friend"
+
     cursor.execute(sql)
     results = cursor.fetchall()
     for r in results:
