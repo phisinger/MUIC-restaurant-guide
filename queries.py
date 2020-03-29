@@ -25,15 +25,15 @@ def topBusinesses(city, number):
 # Show all reviews of a business
 def allReviews(business_id):
     sql = "SELECT r.user_id, u.name, r.date, r.stars, r.text\
-            FROM user u, review r\
-            AND u.user_id = r.user_id\
-            WHERE r.business_id=" + business_id
+            FROM user u, review r \
+            WHERE u.user_id = r.user_id\
+            AND r.business_id=" + business_id 
     cursor.execute(sql)
     results = cursor.fetchall()
     i = 1
     for r in results:
         print(i, ")")
-        print(i, "userID:", r[0], "| username: ",
+        print("userID:", r[0], "| username: ",
         r[1], "| date:", r[2],"rating:", r[3], "/5 |")
         print("Comment:", r[4])
         print("_________________________________________")
@@ -74,7 +74,7 @@ def favouriteCategories(user_id):
            FROM categories c, review r\
            WHERE  r.user_id = " + user_id + "\
            AND c.business_id = r.business_id\
-           AND r.stars > 3\
+           AND r.stars >= 3\
            GROUP BY c.category\
            ORDER BY COUNT(r.review_id) DESC\
            LIMIT 4"

@@ -112,46 +112,52 @@ def import_csv(tableName):
 def main():
     #User interface in console
     print("Welcome to the MUIC restaurant guide:")
-    print("You have two choices: Import the data (IMPORT) or request query search (QUERY)")
-    user_input = input("What do you want to do? ")
-    if user_input.upper() == "IMPORT":
-        cleanUp()
-        createBusinessTable()
-        createUserTable()
-        createFriendsTable()
-        createcategoriesTable()
-        createReviewTable()
-        print("Current Time =", datetime.now().strftime("%H:%M:%S"))
-        tables = ["business", "user", "review", "categories", "friends"]
-        for table_name in tables:
-            import_csv(table_name)
-            print("finished filling table",table_name)
+    close=False
+    while not close:
+        print("You can import the data (IMPORT), request a query search (QUERY), or close the application (CLOSE)")
+        user_input = input("What do you want to do? ")
+        if user_input.upper() == "IMPORT":
+            cleanUp()
+            createBusinessTable()
+            createUserTable()
+            createFriendsTable()
+            createcategoriesTable()
+            createReviewTable()
             print("Current Time =", datetime.now().strftime("%H:%M:%S"))
-    # User interface to run queries        
-    elif user_input.upper() == "QUERY":
-        print("You can choose between topbusinesses (1), allReviews (2), allFriends (3), businessByCategory (4), favouriteCategory(5)")
-        user_input = input("Which querry do you want to send? ")
-        if user_input == "1":
-            values = input("Please enter the city and the number of results seperated by comma: ")
-            city, number = values.split(',')
-            topBusinesses(city, number)
-        elif user_input == "2":
-            business_id = input("Please enter the business ID: ")
-            allReviews(business_id)
-        elif user_input == "3":
-            user_id = input("Please enter the user ID: ")
-            allFriends(user_id)
-        elif user_input == "4":
-            cat = input("Please enter one category: ")
-            businessByCat(cat)
-        elif user_input == "5":
-            user_id = input("Please enter a user ID: ")
-            favouriteCategories(user_id)
+            tables = ["business", "user", "review", "categories", "friends"]
+            for table_name in tables:
+                import_csv(table_name)
+                print("finished filling table",table_name)
+                print("Current Time =", datetime.now().strftime("%H:%M:%S"))
+            print("All tables successfully imported :)")
+        # User interface to run queries        
+        elif user_input.upper() == "QUERY":
+            print("You can choose between topbusinesses (1), allReviews (2), allFriends (3), businessByCategory (4), favouriteCategory(5)")
+            user_input = input("Which querry do you want to send? ")
+            if user_input == "1":
+                values = input("Please enter the city and the number of results seperated by comma: ")
+                city, number = values.split(',')
+                topBusinesses(city, number)
+            elif user_input == "2":
+                business_id = input("Please enter the business ID: ")
+                allReviews(business_id)
+            elif user_input == "3":
+                user_id = input("Please enter the user ID: ")
+                allFriends(user_id)
+            elif user_input == "4":
+                cat = input("Please enter one category: ")
+                businessByCat(cat)
+            elif user_input == "5":
+                user_id = input("Please enter a user ID: ")
+                favouriteCategories(user_id)
+            else:
+                print("Invalid enter, Please try again")
+        elif user_input.upper() == "CLOSE":
+            print("Thanks for using our Restaurant Guide, have a good day :)")
+            close=True        
         else:
             print("Invalid enter, Please try again")
-            
-    else:
-        print("Invalid enter, Please try again")
+        
 
 
 if __name__ == "__main__":
