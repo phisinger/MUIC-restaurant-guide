@@ -103,7 +103,7 @@ def import_csv(tableName):
                     string="'"+(str(row[key]).replace(",",".")).replace("\'","\\\'")+"',"
                 sql+=string
             sql=sql[:-1]+");\n"
-            print(sql)
+            #print(sql)
             cursor.execute(sql)
         mariadb_connection.commit()
 
